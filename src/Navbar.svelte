@@ -1,3 +1,3 @@
 <navbar class="navbar bg-primary">
-    <h1>Player Scoreboard</h1>
+    <h1>To Do List</h1>
 </navbar>

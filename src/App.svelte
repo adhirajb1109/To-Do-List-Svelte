@@ -1,41 +1,41 @@
 <script>
   import Navbar from "./Navbar.svelte";
-  import Player from "./Player.svelte";
-  import AddPlayer from "./AddPlayer.svelte";
-  let players = [
+  import ToDo from "./To-Do.svelte";
+  import AddToDo from "./AddToDo.svelte";
+  let todos = [
     {
-      name: "John Doe",
-      points: 53,
+      title: "Play Guitar",
+      description: "Play Guitar",
     },
     {
-      name: "Sam Smith",
-      points: 45,
+      title: "Read Books",
+      description: "Read Books",
     },
     {
-      name: "Sara Wilson",
-      points: 34,
+      title: "Go To Gym",
+      description: "Go To Gym",
     },
   ];
-  const addPlayer = (e) => {
-    const newPlayer = e.detail;
-    players = [...players, newPlayer];
+  const addtodo = (e) => {
+    const newtodo = e.detail;
+    todos = [...todos, newtodo];
   };
-  const removePlayer = (e) => {
-    players = players.filter((player) => player.name !== e.detail);
+  const removetodo = (e) => {
+    todos = todos.filter((todo) => todo.title !== e.detail);
   };
 </script>
 
 <Navbar />
 <div class="container">
-  <AddPlayer on:addplayer={addPlayer} />
-  {#if players.length === 0}
-    <p>Add Players</p>
+  <AddToDo on:addtodo={addtodo} />
+  {#if todos.length === 0}
+    {""}
   {:else}
-    {#each players as player}
-      <Player
-        name={player.name}
-        points={player.points}
-        on:removeplayer={removePlayer}
+    {#each todos as todo}
+      <ToDo
+        title={todo.title}
+        description={todo.description}
+        on:removetodo={removetodo}
       />
     {/each}
   {/if}
